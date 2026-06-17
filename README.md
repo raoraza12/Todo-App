@@ -1,16 +1,69 @@
-# React + Vite
+# ⚡ Zenith Todo App — Premium AI-Powered Workspace
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A high-performance, responsive, and aesthetically stunning dark-themed Todo application built with React, Vite, and custom CSS. Equipped with a modular **offline NLP parser** and an **online Gemini AI assistant** to help users organize, schedule, and analyze their tasks.
 
-Currently, two official plugins are available:
+🖥️ **Live Demo Link:** [https://razas-todo-app.vercel.app](https://razas-todo-app.vercel.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **🔐 Local Sessions & Auth:** Full Sign-in, Sign-up, and Guest Mode fallback, saving all account configurations locally.
+- **📊 Productivity Analytics:** Detailed metrics with an interactive SVG progress ring, task stats (pending, completed, overdue), and priority volume tracking.
+- **🛠️ Checklist Subtasks:** Break down primary goals into separate micro-checklists, each equipped with its own progress tracker.
+- **🔥 Task Prioritization & Categorization:** Customize categories using HSL color pickers, set task priority levels (high, medium, low) with styled glow borders.
+- **📅 Smart Dates:** Automatic tracking for overdue tasks, with friendly labels (*Today, Tomorrow, Overdue*) and built-in calendar scheduling.
+- **🔍 Advanced Search & Filters:** Filter tasks seamlessly by category tabs, completion status, priority, and text search simultaneously.
+- **🤖 Zenith AI Sidebar:** 
+  - **Offline Mode:** Text command parsing (e.g., typing *"Add high priority homework tomorrow"* drafts the task instantly).
+  - **Online Mode:** Full integration with Gemini 1.5 Flash (via user API key) for creating checklists, analyzing productivity patterns, and coaching.
+- **💾 Backup & Portability:** Import and export your tasks and categories directly as local JSON files.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Technology Stack
+
+- **Framework:** React 19
+- **Build Tool:** Vite
+- **Styling:** Vanilla CSS (Glassmorphism & Flexbox Grid)
+- **Icons:** Lucide React
+- **Hosting:** Vercel
+
+---
+
+## 🚀 Getting Started Locally
+
+To run the application locally on your machine, follow these instructions:
+
+### Prerequisites
+Make sure you have [Node.js](https://nodejs.org) installed.
+
+### Installation & Run
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/raoraza12/Raza-s-todo-app.git
+   ```
+2. Navigate into the project folder:
+   ```bash
+   cd "Raza-s-todo-app"
+   ```
+3. Install the packages:
+   ```bash
+   npm install
+   ```
+4. Start the local development server:
+   ```bash
+   npm run dev
+   ```
+5. Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+---
+
+## 🚀 Production Build
+
+To compile a production bundle:
+```bash
+npm run build
+```
+This builds static assets into the `dist/` directory, which is ready for hosting.
