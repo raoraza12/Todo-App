@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="raza's todo app - a premium glassmorphic todo application equipped with a built-in intelligent AI assistant drawer." />
+    <meta name="theme-color" content="#09070f" />
+    
+    <!-- Title -->
+    <title>raza's todo app | premium intelligent workspace</title>
+
+    <!-- Preconnecting for font loader speed -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      (function() {
+        // Robust detection of back/forward navigation to force reload
+        function checkAndReload() {
+          var isBackNavigation = false;
+
+          try {
+            if (window.performance) {
+              // Modern Navigation Timing API
+              var navigationEntries = window.performance.getEntriesByType('navigation');
+              if (navigationEntries.length > 0) {
+                if (navigationEntries[0].type === 'back_forward') {
+                  isBackNavigation = true;
+                }
+              } else if (window.performance.navigation && window.performance.navigation.type === 2) {
+                // Legacy Navigation Timing API
+                isBackNavigation = true;
+              }
+            }
+          } catch (e) {
+            console.error("Navigation check error:", e);
+          }
+
+          if (isBackNavigation) {
+            window.location.reload();
+          }
+        }
+
+        // Check on initial page load
+        checkAndReload();
+
+        // Also check on pageshow (handles pages loaded from bfcache)
+        window.addEventListener('pageshow', function (event) {
+          if (event.persisted) {
+            window.location.reload();
+          } else {
+            checkAndReload();
+          }
+        });
+
+        // Global error boundary fallback to prevent blank screens
+        function showFallbackError(error) {
+          var rootEl = document.getElementById('root');
+          if (!rootEl) return;
+          
+          // Only show fallback if the app hasn't rendered anything yet or has crashed completely
+          if (!rootEl.children || rootEl.children.length === 0) {
+            rootEl.innerHTML = `
+              <div style="
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+                font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+                background: radial-gradient(circle at 50% 0%, #160f29 0%, #09070f 70%);
+                color: #f3f4f6;
+                box-sizing: border-box;
+              ">
+                <div style="
+                  max-width: 480px;
+                  width: 100%;
+                  padding: 32px;
+                  background: rgba(20, 16, 40, 0.75);
+                  backdrop-filter: blur(16px);
+                  -webkit-backdrop-filter: blur(16px);
+                  border: 1px solid rgba(255, 255, 255, 0.08);
+                  border-radius: 16px;
+                  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+                  text-align: center;
+                  box-sizing: border-box;
+                ">
+                  <div style="
+                    width: 56px;
+                    height: 56px;
+                    border-radius: 50%;
+                    background: rgba(244, 63, 94, 0.1);
+                    color: #f43f5e;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 auto 20px auto;
+                    font-size: 24px;
+                  ">⚠️</div>
+                  <h2 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; font-family: 'Outfit', sans-serif;">Something went wrong</h2>
+                  <p style="font-size: 0.85rem; color: #9ca3af; line-height: 1.5; margin-bottom: 20px;">
+                    The application encountered an unexpected error. This can happen during development or when browser state is restored.
+                  </p>
+                  <div style="
+                    text-align: left;
+                    padding: 12px 16px;
+                    background: rgba(0, 0, 0, 0.2);
+                    border-radius: 8px;
+                    border: 1px solid rgba(255,255,255,0.06);
+                    font-family: monospace;
+                    font-size: 0.75rem;
+                    color: #f43f5e;
+                    margin-bottom: 24px;
+                    word-break: break-all;
+                    max-height: 120px;
+                    overflow-y: auto;
+                  ">
+                    ` + String(error) + `
+                  </div>
+                  <button onclick="window.location.reload()" style="
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 12px 24px;
+                    border-radius: 10px;
+                    font-weight: 600;
+                    font-size: 0.9rem;
+                    cursor: pointer;
+                    border: none;
+                    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+                    color: #fff;
+                    box-shadow: 0 4px 14px rgba(139, 92, 246, 0.4);
+                    transition: all 0.3s ease;
+                  ">
+                    Reload Application
+                  </button>
+                </div>
+              </div>
+            `;
+          }
+        }
+
+        window.addEventListener('error', function(event) {
+          showFallbackError(event.error || event.message);
+        });
+
+        window.addEventListener('unhandledrejection', function(event) {
+          showFallbackError(event.reason);
+        });
+      })();
+    </script>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
