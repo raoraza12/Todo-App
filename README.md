@@ -42,11 +42,11 @@ Make sure you have [Node.js](https://nodejs.org) installed.
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/raoraza12/Raza-s-todo-app.git
+   git clone https://github.com/raoraza12/Todo-App.git
    ```
 2. Navigate into the project folder:
    ```bash
-   cd "Raza-s-todo-app"
+   cd "Todo-App"
    ```
 3. Install the packages:
    ```bash
